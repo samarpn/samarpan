@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questions for You</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+    }
+    .page {
+      display: none; /* All pages are hidden by default */
+      height: 100%;
+      width: 100%;
+      background: url('YOUR_BG_HERE') no-repeat center center/cover; /* Replace YOUR_BG_HERE with your background image */
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+    }
+    .active {
+      display: flex; /* Only the active page will be displayed */
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      animation: slideIn 1s ease-out;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #ff4081;
+      color: white;
+      animation: buttonSlideIn 1.2s ease;
+    }
+    button:hover {
+      background-color: #e91e63;
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    @keyframes buttonSlideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .poem {
+      font-size: 1.5rem;
+      margin: 2rem;
+      line-height: 1.5;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Page 1 - Question 1 -->
+<div class="page active" id="page1">
+  <h1>Do you have a boyfriend?</h1>
+  <div>
+    <button onclick="nextQuestion()">Yes</button>
+    <button onclick="nextQuestion()">No</button>
+  </div>
+</div>
+
+<!-- Page 2 - Question 2 -->
+<div class="page" id="page2">
+  <h1>[Your next question here]</h1>
+  <div>
+    <button onclick="nextQuestion()">Yes</button>
+    <button onclick="nextQuestion()">No</button>
+  </div>
+</div>
+
+<!-- Page 3 - Question 3 -->
+<div class="page" id="page3">
+  <h1>[Your next question here]</h1>
+  <div>
+    <button onclick="nextQuestion()">Yes</button>
+    <button onclick="nextQuestion()">No</button>
+  </div>
+</div>
+
+<!-- Page 4 - Question 4 -->
+<div class="page" id="page4">
+  <h1>[Your next question here]</h1>
+  <div>
+    <button onclick="nextQuestion()">Yes</button>
+    <button onclick="nextQuestion()">No</button>
+  </div>
+</div>
+
+<!-- Page 5 - Question 5 -->
+<div class="page" id="page5">
+  <h1>[Your next question here]</h1>
+  <div>
+    <button onclick="nextQuestion()">Yes</button>
+    <button onclick="nextQuestion()">No</button>
+  </div>
+</div>
+
+<!-- Page 6 - Question 6 -->
+<div class="page" id="page6">
+  <h1>[Your next question here]</h1>
+  <div>
+    <button onclick="nextQuestion()">Yes</button>
+    <button onclick="nextQuestion()">No</button>
+  </div>
+</div>
+
+<!-- Page 7 - Poem -->
+<div class="page" id="page7">
+  <h1>A Poem for You, Shreejika</h1>
+  <p class="poem">
+    You're the light that brightens up my day,<br>
+    A gentle breeze that makes me sway.<br>
+    With every glance, my heart takes flight,<br>
+    In your presence, all feels right.<br><br>
+
+    Your smile, a star, so pure, so true,<br>
+    No one shines brighter, just like you.<br>
+    In my world, you are the art,<br>
+    Shreejika, forever in my heart.
+  </p>
+</div>
+
+<!-- Page 8 - Final Message -->
+<div class="page" id="page8">
+  <h1>Thanks for your feedback!</h1>
+</div>
+
+<!-- Background Music -->
+<audio id="backgroundMusic" loop>
+  <source src="YOUR_AUDIO_HERE" type="audio/mpeg"> <!-- Replace YOUR_AUDIO_HERE with your audio file path -->
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  let currentPage = 1;
+
+  // Function to go to the next page
+  function nextQuestion() {
+    // Hide the current page
+    document.getElementById('page' + currentPage).classList.remove('active');
+    
+    // Increment to the next page
+    currentPage++;
+    
+    // Show the next page if it exists
+    if (currentPage <= 8) {
+      document.getElementById('page' + currentPage).classList.add('active');
+    }
+
+    // Play the audio when reaching the poem (Page 7)
+    if (currentPage === 7) {
+      playPoemMusic();
+    }
+  }
+
+  // Play the music when the poem starts with lower volume
+  function playPoemMusic() {
+    const music = document.getElementById('backgroundMusic');
+    music.volume = 0.2; // Set the volume to a low level (20%)
+    music.play();
+  }
+</script>
+
+</body>
+</html>
